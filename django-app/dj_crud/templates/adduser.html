@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block content %}
+<div class="">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-danger">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">My Notes</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID" aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarID">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'allnotes' %}">All</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'categories' %}">Categories</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'important' %}">Important</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Loout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="d-flex justify-content-between py-3">
+      <h3>Users details table</h3>
+      <a href="{% url 'adduser'%}">
+        <button class="btn btn-primary"> <i class="fa fa-plus" aria-hidden="true"></i> add</button>
+      </a>
+    </div>
+    <form action="/your-name/" method="post" class="form">
+      {% csrf_token %}
+      {{form}}
+      <input class='btn btn-primary mt-3' type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+
+{% endblock %}
